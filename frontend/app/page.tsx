@@ -1,11 +1,10 @@
+import { Suspense } from "react";
 import ArticleList from "../components/ArticleList";
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Latest News</h1>
-
+    <Suspense fallback={<p>Loading...</p>}>
       <ArticleList />
-    </main>
+    </Suspense>
   );
 }

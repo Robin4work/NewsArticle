@@ -1,19 +1,15 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
+// app/article/page.tsx
+import { Suspense } from "react";
+import ArticleList from "@/components/ArticleList";
 
 export default function ArticlePage() {
-  const params = useSearchParams();
-  const url = params.get("url");
-
-  if (!url) return <p>No article found</p>;
-
   return (
-    <div className="w-full h-screen">
-      <iframe
-        src={url}
-        className="w-full h-full border-none"
-      />
-    </div>
+    <main>
+      <h1>Articles</h1>
+      {/* Wrap the component using useSearchParams in Suspense */}
+      <Suspense fallback={<div>Loading articles...</div>}>
+        <ArticleList />
+      </Suspense>
+    </main>
   );
 }
